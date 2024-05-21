@@ -36,7 +36,7 @@ public class ServicoPessoaTeste {
         Pessoa sut = servicoPessoa.cadastrarUsuario(PESSOA_VALIDA);
 
         assertThat(sut).isEqualTo(PESSOA_VALIDA);
-        assertThat(sut.getEnderecos()).isEqualTo(CONJUNTO_ENDERECO);
+        assertThat(sut.getEnderecos()).isEqualTo(CONJUNTO_ENDERECO_VALIDOS);
     }
 
     @Test
