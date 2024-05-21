@@ -21,22 +21,6 @@ API para gerenciamento de usuarios (CRUD) que faz parte [desse desafio](https://
 
 A API poderá ser acessada em [localhost:8080](http://localhost:8080).
 
-### Usando Docker
-
-- Clonar repositório git
-- Construir o projeto:
-```
-./mvnw clean package
-```
-- Construir a imagem:
-```
-./mvnw spring-boot:build-image
-```
-- Executar o container:
-```
-docker run --name place-service -p 8080:8080  -d place-service:0.0.1-SNAPSHOT
-```
-
 A API poderá ser acessada em [localhost:8080](http://localhost:8080).
 
 ## API Endpoints
@@ -45,34 +29,164 @@ Para fazer as requisições HTTP abaixo, foi utilizada a ferramenta [postman](ht
 
 - Cadastrar novo usuario POST /usuarios/cadastrar
 ```
-![image](https://github.com/calebavner/teste-attus/assets/153721016/580c7502-935c-4a71-bd89-cd25685583d4)
+Requisição:
+http://localhost:8080/usuarios/cadastrar
+  {
+    "nome" : "Nome do Usuario",
+    "dataNascimento" : "18/06/1988",
+    "enderecos" : [
+        {
+            "logradouro" : "Rua Carlos Gomes",
+            "cep" : "40720600",
+            "numero" : "11",
+            "cidade" : "Salvador",
+            "estado" : "Bahia",
+            "enderecoPrincipal" : true    
+        }  
+    ]
+}
+
+Resposta:
+  Retorna o endereço do recurso criado
+    http://localhost:8080/1  
 
 ```
 
 - Buscar Usuario cadastrado pelo ID GET /usuarios/{id}
 ```
-![image](https://github.com/calebavner/teste-attus/assets/153721016/fcf12bbe-00cb-4210-9887-9eea2e8dadb9)
+Requisição:
+  http://localhost:8080/usuarios/1
+
+Resposta:
+  {
+    "id": 1,
+    "nome": "Nome do Usuario",
+    "dataNascimento": "18/06/1988",
+    "enderecos": [
+        {
+            "id": 1,
+            "logradouro": "Rua Carlos Gomes",
+            "cep": "40720600",
+            "numero": "11",
+            "cidade": "Salvador",
+            "estado": "Bahia",
+            "enderecoPrincipal": true
+        }
+    ]
+}  
 
 ```
 
 - Listar todos Usuarios cadastrados GET /usuarios
 ```
-![image](https://github.com/calebavner/teste-attus/assets/153721016/3d062c2c-0f87-45a5-a4de-796444017ac4)
+Requisição:
+  http://localhost:8080/usuarios
+
+Resposta:
+  [
+    {
+        "id": 1,
+        "nome": "Avner Caleb",
+        "dataNascimento": "18/06/1988",
+        "enderecos": [
+            {
+                "id": 1,
+                "logradouro": "Rua Carlos Gomes",
+                "cep": "40720600",
+                "numero": "11",
+                "cidade": "Salvador",
+                "estado": "Bahia",
+                "enderecoPrincipal": true
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "nome": "Nome do Usuario",
+        "dataNascimento": "18/06/1988",
+        "enderecos": [
+            {
+                "id": 2,
+                "logradouro": "Rua Carlos Gomes",
+                "cep": "40720600",
+                "numero": "11",
+                "cidade": "Salvador",
+                "estado": "Bahia",
+                "enderecoPrincipal": true
+            }
+        ]
+    }
+]    
 
 ```
 
-- PATCH /places/{id}
+- Atualizar usuario Put /usuarios/{id}
 ```
-http PATCH :8080/places/1 name='New Name' state='New State'
-HTTP/1.1 200 OK
-Content-Length: 142
-Content-Type: application/json
 
-{
-    "createdAt": "2023-06-07T14:45:39.693689",
-    "name": "New Name",
-    "slug": "new-name",
-    "state": "New State",
-    "updatedAt": "2023-06-07T14:53:21.671129345"
+Requisição:
+  http://localhost:8080/usuarios/1
+  {
+    "nome" : "Avner Caleb de Lima",
+    "dataNascimento" : "18/06/1987"
+  }
+
+Resposta:
+  {
+    "id": 1,
+    "nome": "Avner Caleb de Lima",
+    "dataNascimento": "18/06/1987",
+    "enderecos": [
+        {
+            "id": 1,
+            "logradouro": "Rua Carlos Gomes",
+            "cep": "40720600",
+            "numero": "11",
+            "cidade": "Salvador",
+            "estado": "Bahia",
+            "enderecoPrincipal": true
+        }
+    ]
+}
+```
+
+- Adicionar novo endereço ao usuario Post /usuarios/{id}/adicionar-endereco
+```
+
+Requisição:
+http://localhost:8080/usuarios/1/adicionar-endereco
+  {
+    "logradouro" : "Travessa Carlos Gomes",
+    "cep" : "40725610",
+    "numero" : "11",
+    "cidade" : "Salvador",
+    "estado" : "Bahia",
+    "enderecoPrinciapal" : false
+  }
+  
+Resposta:
+ {
+    "id": 1,
+    "nome": "Avner Caleb de Lima",
+    "dataNascimento": "18/06/1987",
+    "enderecos": [
+        {
+            "id": 1,
+            "logradouro": "Rua Carlos Gomes",
+            "cep": "40720600",
+            "numero": "11",
+            "cidade": "Salvador",
+            "estado": "Bahia",
+            "enderecoPrincipal": true
+        },
+        {
+            "id": 3,
+            "logradouro": "Travessa Carlos Gomes",
+            "cep": "40725610",
+            "numero": "11",
+            "cidade": "Salvador",
+            "estado": "Bahia",
+            "enderecoPrincipal": false
+        }
+    ]
 }
 ```
