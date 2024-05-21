@@ -25,6 +25,8 @@ A API poderá ser acessada em [localhost:8080](http://localhost:8080).
 
 Para fazer as requisições HTTP abaixo, foi utilizada a ferramenta [postman](https://www.postman.com/):
 
+## Usuarios
+
 - Cadastrar novo usuario POST /usuarios/cadastrar
 ```
 Requisição:
@@ -187,4 +189,69 @@ Resposta:
         }
     ]
 }
+```
+## Enderecos
+
+- Listar endereços cadastrados GET /enderecos
+```
+Requisição:
+  http://localhost:8080/enderecos
+  
+Resposta:
+  [
+    {
+        "id": 1,
+        "logradouro": "Rua Carlos Gomes",
+        "cep": "40720600",
+        "numero": "11",
+        "cidade": "Salvador",
+        "estado": "Bahia",
+        "enderecoPrincipal": true
+    }
+]  
+
+```
+
+- Buscar endereço cadastrados pelo ID GET /enderecos/{id}
+```
+Requisição:
+  http://localhost:8080/enderecos/1
+  
+Resposta:
+  {
+    "id": 1,
+    "logradouro": "Rua Carlos Gomes",
+    "cep": "40720600",
+    "numero": "11",
+    "cidade": "Salvador",
+    "estado": "Bahia",
+    "enderecoPrincipal": true
+}  
+
+```
+
+- Atualizar endereco Put /usuarios/{id}
+```
+
+Requisição:
+  http://localhost:8080/enderecos/1
+  {
+    "logradouro" : "Travessa Boa Esperança",
+    "cep" : "40725610",
+    "numero" : "11",
+    "cidade" : "Salvador",
+    "estado" : "Bahia",
+    "enderecoPrincipal" : true 
+  }
+
+Resposta:
+  {
+    "id": 1,
+    "logradouro": "Travessa Boa Esperança",
+    "cep": "40725610",
+    "numero": "11",
+    "cidade": "Salvador",
+    "estado": "Bahia",
+    "enderecoPrincipal": true
+  }
 ```
