@@ -21,8 +21,6 @@ API para gerenciamento de usuarios (CRUD) que faz parte [desse desafio](https://
 
 A API poderá ser acessada em [localhost:8080](http://localhost:8080).
 
-A API poderá ser acessada em [localhost:8080](http://localhost:8080).
-
 ## API Endpoints
 
 Para fazer as requisições HTTP abaixo, foi utilizada a ferramenta [postman](https://www.postman.com/):
