@@ -2,7 +2,7 @@
   Avaliação Attus
 </h1>
 
-API para gerenciamento de usuarios (CRUD) que faz parte da avaliação para a vaga [vaga](https://attus.gupy.io/jobs/7073611?jobBoardSource=gupy_opportunities) para pessoas desenvolvedoras backend.
+API para gerenciamento de usuarios (CRUD) que faz parte da avaliação para a [vaga](https://attus.gupy.io/jobs/7073611?jobBoardSource=gupy_opportunities) para pessoas desenvolvedoras backend.
 
 ## Tecnologias
  
