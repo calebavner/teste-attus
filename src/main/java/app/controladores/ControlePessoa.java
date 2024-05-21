@@ -4,6 +4,7 @@ import app.entidades.Endereco;
 import app.entidades.Pessoa;
 import app.servicos.ServicoEndereco;
 import app.servicos.ServicoPessoa;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -22,7 +23,7 @@ public class ControlePessoa {
     private final ServicoEndereco servicoEndereco;
 
     @PostMapping("/cadastrar")
-    public ResponseEntity<Pessoa> cadastrarUsuario(@RequestBody Pessoa pessoa, UriComponentsBuilder uriBuilder) {
+    public ResponseEntity<Pessoa> cadastrarUsuario(@RequestBody @Valid Pessoa pessoa, UriComponentsBuilder uriBuilder) {
 
         Set<Endereco> enderecos = pessoa.getEnderecos();
 
