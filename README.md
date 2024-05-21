@@ -3,7 +3,7 @@
 </h1>
 
 API para gerenciamento de usuarios (CRUD) que faz parte da avaliação para a [vaga](https://attus.gupy.io/jobs/7073611?jobBoardSource=gupy_opportunities). A avaliação tem como objetivo selecionar desenvolvedores backend.
-As respostas para as questões abertas assim como a redação se encontram nos PDF contidos nesse repositório.
+As respostas para as questões abertas assim como a redação se encontram nos PDF's contidos nesse repositório.
 
 ## Tecnologias
  
