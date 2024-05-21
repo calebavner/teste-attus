@@ -3,6 +3,7 @@
 </h1>
 
 API para gerenciamento de usuarios (CRUD) que faz parte da avaliação para a [vaga](https://attus.gupy.io/jobs/7073611?jobBoardSource=gupy_opportunities). A avaliação tem como objetivo selecionar desenvolvedores backend.
+As respostas para as questões abertas assim como a redação se encontram nos PDF contidos nesse repositório.
 
 ## Tecnologias
  
@@ -120,7 +121,7 @@ Resposta:
 
 ```
 
-- Atualizar usuario Put /usuarios/{id}
+- Atualizar usuario PUT /usuarios/{id}
 ```
 
 Requisição:
@@ -149,7 +150,7 @@ Resposta:
 }
 ```
 
-- Adicionar novo endereço ao usuario Post /usuarios/{id}/adicionar-endereco
+- Adicionar novo endereço ao usuario POST /usuarios/{id}/adicionar-endereco
 ```
 
 Requisição:
@@ -230,7 +231,7 @@ Resposta:
 
 ```
 
-- Atualizar endereco Put /usuarios/{id}
+- Atualizar endereco PUT /usuarios/{id}
 ```
 
 Requisição:
