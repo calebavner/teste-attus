@@ -2,6 +2,7 @@ package app.servicos;
 
 import app.entidades.Endereco;
 import app.repositorios.RepositorioEndereco;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +24,11 @@ public class ServicoEndereco {
 
     public Endereco alterarEndereco(Long id, Endereco endereco) {
         return attEndereco(id, endereco);
+    }
+
+    public Endereco buscarEnderecoPorId(Long id) {
+        return repositorioEndereco.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Não foi possível encontrar um endereço para id: " + id));
     }
 
     private Endereco attEndereco(Long id, Endereco endereco) {

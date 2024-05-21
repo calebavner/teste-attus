@@ -24,4 +24,9 @@ public class ControleEndereco {
     public ResponseEntity<List<Endereco>> listarEnderecos() {
         return ResponseEntity.ok(servicoEndereco.listarEnderecos());
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Endereco> buscarEnderecoPorId(@PathVariable Long id) {
+        return ResponseEntity.ok(servicoEndereco.buscarEnderecoPorId(id));
+    }
 }

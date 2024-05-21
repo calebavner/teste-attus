@@ -35,8 +35,30 @@ public class ControlePessoa {
         return ResponseEntity.created(uri).build();
     }
 
+    @PostMapping("/{id}/adicionar-endereco")
+    public ResponseEntity<Pessoa> adicionarNovoEndereco(@PathVariable Long id, @RequestBody Endereco endereco) {
+
+        Pessoa usuarioAtualizado = servicoPessoa.buscarUsuarioPorId(id);
+        servicoEndereco.cadastrarEndereco(endereco);
+
+        Set<Endereco> enderecos = usuarioAtualizado.getEnderecos();
+        enderecos.add(endereco);
+        usuarioAtualizado.setEnderecos(enderecos);
+        return ResponseEntity.ok(servicoPessoa.atualizarDadosDeUsuario(id, usuarioAtualizado));
+    }
+
     @GetMapping
     public ResponseEntity<List<Pessoa>> listarUsuarios() {
         return ResponseEntity.ok(servicoPessoa.listarUsuarios());
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Pessoa> buscarUsuarioPorId(@PathVariable Long id) {
+        return ResponseEntity.ok(servicoPessoa.buscarUsuarioPorId(id));
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Pessoa> atualizaDadosUsuario(@PathVariable Long id, @RequestBody Pessoa pessoa) {
+        return ResponseEntity.ok(servicoPessoa.atualizarDadosDeUsuario(id, pessoa));
     }
 }
